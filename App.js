@@ -1,59 +1,107 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, StatusBar } from "react-native";
-import SplashScreen from "react-native-splash-screen";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  Button,
+  Image,
+  ImageBackground,
+  Animated,
+  TouchableOpacity,
+  Icon
+} from "react-native";
+import {
+  createStackNavigator,
+  createMaterialTopTabNavigator,
+  createAppContainer
+} from "react-navigation";
+import HomeScreen from "./src/screen/HomeScreen";
+import AboutScreen from "./src/screen/AboutScreen";
+import ChordPage from "./src/page/Chord";
+import ScalePage from "./src/page/Scale";
+import TriadPage from "./src/page/Triad";
+import ArpeggioPage from "./src/page/Arpeggio";
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
+const HomeNavigator = createMaterialTopTabNavigator({
+  Scale: {
+    screen: ScalePage
+  },
+  Chord: {
+    screen: ChordPage
+  },
+  Triad: {
+    screen: TriadPage
+  },
+  Arpeggio: {
+    screen: ArpeggioPage
+  }
 });
 
-type Props = {};
-export default class App extends Component<Props> {
-  componentDidMount() {
-    // do stuff while splash screen is shown
-    // After having done stuff (such as async tasks) hide the splash screen
-    SplashScreen.hide();
+const AppNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+      path: "people/:name",
+      navigationOptions: ({ navigation }) => ({
+        title: `GUITAR PROFICIENCY TEST`,
+        headerStyle: {
+          backgroundColor: "#09090A"
+        },
+        headerTitleStyle: {
+          fontWeight: "bold",
+          color: "#ffffff"
+        },
+        headerRight: (
+          <TouchableOpacity
+            style={{ paddingRight: 15 }}
+            onPress={() => navigation.navigate("About")}
+          >
+            <Image
+              style={{ width: 28, height: 28 }}
+              source={require("./src/assets/icon/info.png")}
+            />
+          </TouchableOpacity>
+        )
+      })
+    },
+    About: {
+      screen: AboutScreen,
+      path: "people/:name",
+      navigationOptions: ({ navigation }) => ({
+        title: `ABOUT GUITAR PROFICIENCY TEST `,
+        headerTitleStyle: {
+          fontSize: 15
+        }
+      })
+    },
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#09090A"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        color: "#ffffff"
+      }
+    }
   }
+);
 
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar hidden/>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>
-          To get started, TYPEEEEEEEEEEEEEasdasdkjashdkjashdEEEE App.js
-        </Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <ImageBackground
+        source={require("./src/assets/app-background/background.png")}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <AppContainer />
+      </ImageBackground>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  }
-});
