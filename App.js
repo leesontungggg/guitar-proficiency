@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   Icon
 } from "react-native";
+import SplashScreen from "react-native-splash-screen";
 import {
   createStackNavigator,
   createMaterialTopTabNavigator,
@@ -71,8 +72,11 @@ const AppNavigator = createStackNavigator(
       path: "people/:name",
       navigationOptions: ({ navigation }) => ({
         title: `ABOUT GUITAR PROFICIENCY TEST `,
+        headerStyle: {
+          backgroundColor: "#09090A"
+        },
         headerTitleStyle: {
-          fontSize: 15
+          fontSize: 14
         }
       })
     },
@@ -94,6 +98,11 @@ const AppNavigator = createStackNavigator(
 const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
+  componentDidMount() {
+    // do stuff while splash screen is shown
+      // After having done stuff (such as async tasks) hide the splash screen
+      SplashScreen.hide();
+  }
   render() {
     return (
       <ImageBackground

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SplashScreen from "react-native-splash-screen";
+
 import {
   createMaterialTopTabNavigator,
   createStackNavigator,
@@ -28,18 +28,16 @@ const Tab = ({ focusAnim, title, onPress }) => {
         style={{
           padding: 10,
           borderRadius: 10,
-          backgroundColor: focusAnim.interpolate({
-            inputRange: [0, 1],
-            outputRange: ["transparent", "tomato"]
-          })
+          backgroundColor: "#09090A"
         }}
       >
         <Animated.Text
           style={{
             color: focusAnim.interpolate({
               inputRange: [0, 1],
-              outputRange: ["#444", "#fff"]
-            })
+              outputRange: ["#fff", "#A92411"]
+            }),
+            fontSize: 20
           }}
         >
           {title}
@@ -58,7 +56,11 @@ const TabBar = props => {
         backgroundColor: "#09090A",
         flexDirection: "row",
         justifyContent: "space-around",
-        alignItems: "center"
+        alignItems: "center",
+        // borderTopColor: "#D6D6D6",
+        // borderTopWidth: 0.5,
+        // borderBottomColor: "#D6D6D6",
+        // borderBottomWidth: 0.5,
       }}
     >
       {navigationState.routes.map((route, index) => {

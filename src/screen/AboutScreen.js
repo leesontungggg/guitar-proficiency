@@ -13,16 +13,43 @@ import {
 export default class AboutScreen extends Component<Props> {
   render() {
     return (
-      <View
+      <ImageBackground
+        source={require("../assets/app-background/about-background.jpg")}
         style={{
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "transparent"
+          paddingBottom: '25%'
         }}
       >
-        <Text>About Screen</Text>
-      </View>
+        <Image
+          source={require("../assets/icon/logo-red.png")}
+          style={{ width: 70, height: 70 }}
+        />
+        <Text
+          style={{
+            marginTop: 24,
+            textAlign: "center",
+            width: "70%",
+            color: "white"
+          }}
+        >
+          Berklee Tool is an application developed by Designveloper, where
+          guitar players use for quizzing themeselves on memorzing of music
+          notes
+        </Text>
+
+        <Text
+          style={{
+            marginTop: 12,
+            textAlign: "center",
+            width: "70%",
+            color: "white"
+          }}
+        >
+          Version 0.1
+        </Text>
+      </ImageBackground>
     );
   }
 }
