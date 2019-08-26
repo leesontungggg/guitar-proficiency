@@ -19,17 +19,11 @@ import {
   TouchableOpacity,
   Dimensions,
   Icon,
-  ScrollView
+  ScrollView,
+  InteractionManager
 } from "react-native";
 
 class Tab extends Component<Props> {
-  handlePress = () => {
-    var device_width = Dimensions.get("window").width;
-    console.log(device_width);
-    let a = (96 - device_width)/2 + this.props.currentPosition*150;
-    this.props.onPress(a);
-    console.log(a)
-  };
   setDestinationViewRef = element => {
     this.destinationViewRef = element;
   };
@@ -40,14 +34,14 @@ class Tab extends Component<Props> {
         onTouchStart={e => {
           consol.log("touchMove", e.nativeEvent);
         }}
-        onPress={this.handlePress}
+        onPress={this.props.onPress}
       >
         <Animated.View
           style={{
             width: 150,
-            padding: 10,
             borderRadius: 10,
-            backgroundColor: "#09090A"
+            backgroundColor: "#09090A",
+            alignItems: "center"
           }}
         >
           <Animated.Text
@@ -68,20 +62,23 @@ class Tab extends Component<Props> {
 }
 
 class TabBar extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = { initialReady: false };
+    // make sure this method gets the right scope, no matter how it's called
+    this.setScrollViewRef = this.setScrollViewRef.bind(this);
+  }
+
   setScrollViewRef = element => {
     this.scrollViewRef = element;
-  };
-
-  handleTabPress = (routeName, position) => {
-    this.scrollViewRef.scrollTo({ x: position, y: 0, animated: true });
-    this.props.navigation.navigate(routeName);
   };
 
   render() {
     return (
       <View
         style={{
-          height: 80,
+          paddingTop: 20,
+          height: 100,
           backgroundColor: "#09090A",
           flexDirection: "column",
           justifyContent: "space-around",
@@ -108,7 +105,13 @@ class TabBar extends Component<Props> {
           }}
         >
           {this.props.navigationState.routes.map((route, index) => {
-            console.log(this.props.navigationState.routes);
+            var device_width = Dimensions.get("window").width;
+            console.log(this.props.navigationState)
+            let value = 150 - device_width / 2 - 75 + this.props.navigationState.index * 150;
+            InteractionManager.runAfterInteractions(() =>
+              this.scrollViewRef.scrollTo({ x: value, y: 0, animated: true })
+            );
+
             const focusAnim = this.props.position.interpolate({
               inputRange: [index - 1, index, index + 1],
               outputRange: [0, 1, 0]
@@ -118,10 +121,7 @@ class TabBar extends Component<Props> {
                 focusAnim={focusAnim}
                 title={route.routeName}
                 route={this.props.navigationState.routes}
-                currentPosition={index}
-                onPress={position =>
-                  this.handleTabPress(route.routeName, position)
-                }
+                onPress={() => this.props.navigation.navigate(route.routeName)}
               />
             );
           })}
@@ -171,13 +171,13 @@ const HomeNavigator = createMaterialTopTabNavigator(
     Scale: {
       screen: ScalePage
     },
-    Chord: {
+    Chord: {  
       screen: ChordPage
     },
     Triad: {
       screen: TriadPage
     },
-    Arpeggio: {
+    '4 Part Arpeggios': {
       screen: ArpeggioPage
     }
   },
