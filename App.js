@@ -25,30 +25,22 @@ import ScalePage from "./src/page/Scale";
 import TriadPage from "./src/page/Triad";
 import ArpeggioPage from "./src/page/Arpeggio";
 
-const HomeNavigator = createMaterialTopTabNavigator({
-  Scale: {
-    screen: ScalePage
-  },
-  Chord: {
-    screen: ChordPage
-  },
-  Triad: {
-    screen: TriadPage
-  },
-  Arpeggio: {
-    screen: ArpeggioPage
-  }
-});
-
 const AppNavigator = createStackNavigator(
   {
     Home: {
       screen: HomeScreen,
       path: "people/:name",
       navigationOptions: ({ navigation }) => ({
+        headerLayoutPreset: 'left',
         title: `GUITAR PROFICIENCY TEST`,
         headerStyle: {
-          backgroundColor: "#09090A"
+          backgroundColor: "#09090A",
+          borderBottomColor: "#f1f1f1",
+          borderBottomWidth: 0.5,
+          height: 70
+        },
+        headerTitleContainerStyle: {
+          left: 0
         },
         headerTitleStyle: {
           fontWeight: "bold",
@@ -72,8 +64,21 @@ const AppNavigator = createStackNavigator(
       path: "people/:name",
       navigationOptions: ({ navigation }) => ({
         title: `ABOUT GUITAR PROFICIENCY TEST `,
+        headerLeft: (
+          <TouchableOpacity
+            style={{ paddingLeft: 15, }}
+            onPress={() => navigation.navigate("Home")}
+          >
+            <Image
+              style={{ width: 20, height: 20 }}
+              source={require("./src/assets/icon/back-icon.png")}
+            />
+          </TouchableOpacity>
+        ),
+
         headerStyle: {
-          backgroundColor: "#09090A"
+          backgroundColor: "#09090A",
+          height: 70
         },
         headerTitleStyle: {
           fontSize: 14
@@ -99,8 +104,6 @@ const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
   componentDidMount() {
-    // do stuff while splash screen is shown
-      // After having done stuff (such as async tasks) hide the splash screen
       SplashScreen.hide();
   }
   render() {
