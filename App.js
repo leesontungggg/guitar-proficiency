@@ -31,7 +31,7 @@ const AppNavigator = createStackNavigator(
       screen: HomeScreen,
       path: "people/:name",
       navigationOptions: ({ navigation }) => ({
-        headerLayoutPreset: 'left',
+        headerLayoutPreset: "left",
         title: `GUITAR PROFICIENCY TEST`,
         headerStyle: {
           backgroundColor: "#09090A",
@@ -66,7 +66,7 @@ const AppNavigator = createStackNavigator(
         title: `ABOUT GUITAR PROFICIENCY TEST `,
         headerLeft: (
           <TouchableOpacity
-            style={{ paddingLeft: 15, }}
+            style={{ paddingLeft: 15 }}
             onPress={() => navigation.navigate("Home")}
           >
             <Image
@@ -75,7 +75,10 @@ const AppNavigator = createStackNavigator(
             />
           </TouchableOpacity>
         ),
-
+        headerTitleContainerStyle: {
+          left: 50,
+          right: 50
+        },
         headerStyle: {
           backgroundColor: "#09090A",
           height: 70
@@ -84,7 +87,7 @@ const AppNavigator = createStackNavigator(
           fontSize: 14
         }
       })
-    },
+    }
   },
   {
     initialRouteName: "Home",
@@ -104,7 +107,7 @@ const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
   componentDidMount() {
-      SplashScreen.hide();
+    SplashScreen.hide();
   }
   render() {
     return (
