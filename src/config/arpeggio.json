@@ -1,0 +1,31 @@
+{
+    "Root": {
+      "A": "true",
+      "B": "true",
+      "C": "true",
+      "D": "true",
+      "E": "true",
+      "F": "true",
+      "G": "true",
+      "Ab": "true",
+      "Bb": "true",
+      "Db": "true",
+      "Eb": "true",
+      "Gb": "true",
+      "A#": "true",
+      "C#": "true",
+      "D#": "true",
+      "F#": "true",
+      "G#": "true"
+    },
+    "Quality": {
+      "Ma7": "true",
+      "-7": "true",
+      "dim7": "true",
+      "7": "true",
+      "7sus4": "true",
+      "7#5": "true",
+      "7b5": "true"
+    }
+  }
+  

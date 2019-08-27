@@ -1,0 +1,34 @@
+{
+  "Root": {
+    "A": "true",
+    "B": "true",
+    "C": "true",
+    "D": "true",
+    "E": "true",
+    "F": "true",
+    "G": "true",
+    "Ab": "true",
+    "Bb": "true",
+    "Db": "true",
+    "Eb": "true",
+    "Gb": "true",
+    "A#": "true",
+    "C#": "true",
+    "D#": "true",
+    "F#": "true",
+    "G#": "true"
+  },
+  "Quality": {
+    "Ionian": "true",
+    "Dorian": "true",
+    "Phrygian": "true",
+    "Lydian": "true",
+    "Mixolydian": "true",
+    "Aeolian": "true",
+    "Locrian": "true",
+    "Chromatic": "true",
+    "Harmonic": "true",
+    "Minor": "true",
+    "Melodic minor": "true"
+  }
+}

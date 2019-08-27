@@ -38,7 +38,7 @@ class Tab extends Component<Props> {
       >
         <Animated.View
           style={{
-            width: 150,
+            width: 100,
             borderRadius: 10,
             backgroundColor: "#09090A",
             alignItems: "center"
@@ -94,6 +94,7 @@ class TabBar extends Component<Props> {
           decelerationRate={0}
           snapToInterval={200} //your element width
           snapToAlignment={"center"}
+          scrollEnabled = {false}
           style={{
             height: 80,
             backgroundColor: "#09090A",
@@ -106,8 +107,7 @@ class TabBar extends Component<Props> {
         >
           {this.props.navigationState.routes.map((route, index) => {
             var device_width = Dimensions.get("window").width;
-            console.log(this.props.navigationState)
-            let value = 150 - device_width / 2 - 75 + this.props.navigationState.index * 150;
+            let value = 100 - device_width / 2 - 50 + this.props.navigationState.index * 100;
             InteractionManager.runAfterInteractions(() =>
               this.scrollViewRef.scrollTo({ x: value, y: 0, animated: true })
             );
@@ -177,7 +177,7 @@ const HomeNavigator = createMaterialTopTabNavigator(
     Triad: {
       screen: TriadPage
     },
-    '4 Part Arpeggios': {
+    Arpeggio: {
       screen: ArpeggioPage
     }
   },
