@@ -20,7 +20,8 @@ import {
   Dimensions,
   Icon,
   ScrollView,
-  InteractionManager
+  InteractionManager,
+  Platform
 } from "react-native";
 
 class Tab extends Component<Props> {
@@ -38,7 +39,7 @@ class Tab extends Component<Props> {
       >
         <Animated.View
           style={{
-            width: 100,
+            width: 150,
             borderRadius: 10,
             backgroundColor: "#09090A",
             alignItems: "center"
@@ -94,7 +95,7 @@ class TabBar extends Component<Props> {
           decelerationRate={0}
           snapToInterval={200} //your element width
           snapToAlignment={"center"}
-          scrollEnabled = {false}
+          scrollEnabled={false}
           style={{
             height: 80,
             backgroundColor: "#09090A",
@@ -105,9 +106,23 @@ class TabBar extends Component<Props> {
             // borderBottomWidth: 0.5,
           }}
         >
+          <View style={{ width: 384 }}></View>
           {this.props.navigationState.routes.map((route, index) => {
             var device_width = Dimensions.get("window").width;
-            let value = 100 - device_width / 2 - 50 + this.props.navigationState.index * 100;
+            let value;
+            if (Platform.OS == "android") {
+              value =
+                534 -
+                device_width / 2 -
+                150 / 2 +
+                this.props.navigationState.index * 150;
+            } else {
+              value =
+                534 -
+                device_width / 2 -
+                150 / 2 +
+                this.props.navigationState.index * 150;
+            }
             InteractionManager.runAfterInteractions(() =>
               this.scrollViewRef.scrollTo({ x: value, y: 0, animated: true })
             );
@@ -125,6 +140,7 @@ class TabBar extends Component<Props> {
               />
             );
           })}
+          <View style={{ width: 384 }}></View>
         </ScrollView>
         <View
           style={{
@@ -171,7 +187,7 @@ const HomeNavigator = createMaterialTopTabNavigator(
     Scale: {
       screen: ScalePage
     },
-    Chord: {  
+    Chord: {
       screen: ChordPage
     },
     Triad: {
