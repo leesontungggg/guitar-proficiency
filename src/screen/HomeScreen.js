@@ -51,7 +51,9 @@ class Tab extends Component<Props> {
                 inputRange: [0, 1],
                 outputRange: ["#fff", "#A92411"]
               }),
-              fontSize: 20
+              fontSize: 20,
+              fontFamily: "Blinker",
+
             }}
           >
             {this.props.title}
@@ -184,16 +186,16 @@ class TabBar extends Component<Props> {
 
 const HomeNavigator = createMaterialTopTabNavigator(
   {
-    Scale: {
+    SCALE: {
       screen: ScalePage
     },
-    Chord: {
+    CHORD: {
       screen: ChordPage
     },
-    Triad: {
+    TRIAD: {
       screen: TriadPage
     },
-    Arpeggio: {
+    ARPEGGIO: {
       screen: ArpeggioPage
     }
   },

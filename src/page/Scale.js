@@ -27,10 +27,11 @@ export default class ScalePage extends Component<Props> {
   generateNewScale = () => {
     let rootScaleArray = Object.keys(ScaleConfig.Root);
     let qualityScaleArray = Object.keys(ScaleConfig.Quality);
-    console.log(ScaleConfig.Quality)
+    console.log(ScaleConfig.Quality);
 
     let randomScale =
-      this.getRandomArrayElement(rootScaleArray) + " " +
+      this.getRandomArrayElement(rootScaleArray) +
+      " " +
       this.getRandomArrayElement(qualityScaleArray);
     return randomScale;
   };
@@ -58,7 +59,9 @@ export default class ScalePage extends Component<Props> {
             color: "#ffffff"
           }}
         >
-          <Text style={{ fontSize: 40, color: "#ffffff" }}>
+          <Text
+            style={{ fontSize: 40, color: "#ffffff", fontFamily: "Blinker" }}
+          >
             {this.state.currentScale}
           </Text>
         </ImageBackground>
@@ -73,15 +76,15 @@ export default class ScalePage extends Component<Props> {
             backgroundColor: "#c22700"
           }}
           onPress={() => {
-              this.setState({ currentScale: this.generateNewScale() });
-            }}
+            this.setState({ currentScale: this.generateNewScale() });
+          }}
         >
           <Text
             style={{
               color: "#ffffff",
-              fontWeight: "bold"
+              fontWeight: "bold",
+              fontFamily: "Blinker"
             }}
-            
           >
             GENERATE
           </Text>

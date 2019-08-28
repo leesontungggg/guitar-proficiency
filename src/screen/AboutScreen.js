@@ -19,7 +19,7 @@ export default class AboutScreen extends Component<Props> {
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
-          paddingBottom: '25%'
+          paddingBottom: "25%"
         }}
       >
         <Image
@@ -31,7 +31,8 @@ export default class AboutScreen extends Component<Props> {
             marginTop: 24,
             textAlign: "center",
             width: "70%",
-            color: "white"
+            color: "white",
+            fontFamily: "Blinker"
           }}
         >
           Berklee Tool is an application developed by Designveloper, where
@@ -44,7 +45,8 @@ export default class AboutScreen extends Component<Props> {
             marginTop: 12,
             textAlign: "center",
             width: "70%",
-            color: "white"
+            color: "white",
+            fontFamily: "Blinker"
           }}
         >
           Version 0.1

@@ -57,7 +57,9 @@ export default class TriadPage extends Component<Props> {
             color: "#ffffff"
           }}
         >
-          <Text style={{ fontSize: 40, color: "#ffffff" }}>
+          <Text
+            style={{ fontSize: 40, color: "#ffffff", fontFamily: "Blinker" }}
+          >
             {this.state.currentTriad}
           </Text>
         </ImageBackground>
@@ -78,7 +80,8 @@ export default class TriadPage extends Component<Props> {
           <Text
             style={{
               color: "#ffffff",
-              fontWeight: "bold"
+              fontWeight: "bold",
+              fontFamily: "Blinker"
             }}
           >
             GENERATE

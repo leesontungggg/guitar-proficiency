@@ -40,11 +40,12 @@ const AppNavigator = createStackNavigator(
           height: 70
         },
         headerTitleContainerStyle: {
-          left: 0
+          left: Platform.OS === 'android' ? 0 : '-20%'
         },
         headerTitleStyle: {
           fontWeight: "bold",
-          color: "#ffffff"
+          color: "#ffffff",
+          fontFamily: "Blinker",
         },
         headerRight: (
           <TouchableOpacity
@@ -84,7 +85,9 @@ const AppNavigator = createStackNavigator(
           height: 70
         },
         headerTitleStyle: {
-          fontSize: 14
+          fontSize: 14,
+          fontFamily: "Blinker",
+
         }
       })
     }

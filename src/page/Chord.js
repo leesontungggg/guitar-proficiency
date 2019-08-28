@@ -11,7 +11,6 @@ import {
 } from "react-native";
 const ChordConfig = require("../config/chord.json");
 
-
 export default class ChordPage extends Component<Props> {
   constructor(props) {
     super(props);
@@ -30,7 +29,7 @@ export default class ChordPage extends Component<Props> {
     let qualityChordArray = Object.keys(ChordConfig.Quality);
 
     let randomChord =
-      this.getRandomArrayElement(rootChordArray) + 
+      this.getRandomArrayElement(rootChordArray) +
       this.getRandomArrayElement(qualityChordArray);
     return randomChord;
   };
@@ -58,7 +57,9 @@ export default class ChordPage extends Component<Props> {
             color: "#ffffff"
           }}
         >
-          <Text style={{ fontSize: 40, color: "#ffffff" }}>
+          <Text
+            style={{ fontSize: 40, color: "#ffffff", fontFamily: "Blinker" }}
+          >
             {this.state.currentChord}
           </Text>
         </ImageBackground>
@@ -73,15 +74,15 @@ export default class ChordPage extends Component<Props> {
             backgroundColor: "#c22700"
           }}
           onPress={() => {
-              this.setState({ currentChord: this.generateNewChord() });
-            }}
+            this.setState({ currentChord: this.generateNewChord() });
+          }}
         >
           <Text
             style={{
               color: "#ffffff",
-              fontWeight: "bold"
+              fontWeight: "bold",
+              fontFamily: "Blinker"
             }}
-           
           >
             GENERATE
           </Text>
