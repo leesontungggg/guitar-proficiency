@@ -60,7 +60,7 @@ export default class ScalePage extends Component<Props> {
           }}
         >
           <Text
-            style={{ fontSize: 40, color: "#ffffff", fontFamily: "Blinker" }}
+            style={{ fontSize: 40, color: "#ffffff", fontFamily: "Blinker-Regular" }}
           >
             {this.state.currentScale}
           </Text>
@@ -83,7 +83,7 @@ export default class ScalePage extends Component<Props> {
             style={{
               color: "#ffffff",
               fontWeight: "bold",
-              fontFamily: "Blinker"
+              fontFamily: "Blinker-Regular"
             }}
           >
             GENERATE

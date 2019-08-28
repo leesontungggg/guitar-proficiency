@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import {
   Platform,
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  Button,
   Image,
   ImageBackground,
   Animated,
-  TouchableOpacity,
-  Icon
+  TouchableOpacity
 } from "react-native";
 import SplashScreen from "react-native-splash-screen";
 import {
@@ -20,10 +14,6 @@ import {
 } from "react-navigation";
 import HomeScreen from "./src/screen/HomeScreen";
 import AboutScreen from "./src/screen/AboutScreen";
-import ChordPage from "./src/page/Chord";
-import ScalePage from "./src/page/Scale";
-import TriadPage from "./src/page/Triad";
-import ArpeggioPage from "./src/page/Arpeggio";
 
 const AppNavigator = createStackNavigator(
   {
@@ -40,12 +30,12 @@ const AppNavigator = createStackNavigator(
           height: 70
         },
         headerTitleContainerStyle: {
-          left: Platform.OS === 'android' ? 0 : '-20%'
+          left: Platform.OS === "android" ? 0 : "-20%"
         },
         headerTitleStyle: {
           fontWeight: "bold",
           color: "#ffffff",
-          fontFamily: "Blinker",
+          fontFamily: "Blinker-Regular"
         },
         headerRight: (
           <TouchableOpacity
@@ -86,8 +76,7 @@ const AppNavigator = createStackNavigator(
         },
         headerTitleStyle: {
           fontSize: 14,
-          fontFamily: "Blinker",
-
+          fontFamily: "Blinker-Regular"
         }
       })
     }

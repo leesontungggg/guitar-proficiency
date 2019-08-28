@@ -32,7 +32,7 @@ export default class AboutScreen extends Component<Props> {
             textAlign: "center",
             width: "70%",
             color: "white",
-            fontFamily: "Blinker"
+            fontFamily: "Blinker-Regular"
           }}
         >
           Berklee Tool is an application developed by Designveloper, where
@@ -46,7 +46,7 @@ export default class AboutScreen extends Component<Props> {
             textAlign: "center",
             width: "70%",
             color: "white",
-            fontFamily: "Blinker"
+            fontFamily: "Blinker-Regular"
           }}
         >
           Version 0.1
