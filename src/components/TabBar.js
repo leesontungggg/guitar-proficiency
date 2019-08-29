@@ -28,8 +28,8 @@ export default class TabBar extends Component<Props> {
     return (
       <View
         style={{
-          paddingTop: 20,
-          height: 100,
+          paddingTop: 10,
+          height: 80,
           backgroundColor: "#09090A",
           flexDirection: "column",
           justifyContent: "space-around",

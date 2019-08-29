@@ -58,7 +58,7 @@ export default class ChordPage extends Component<Props> {
           }}
         >
           <Text
-            style={{ fontSize: 40, color: "#ffffff", fontFamily: "Blinker-Regular" }}
+            style={{ fontSize: 40, color: "#ffffff", fontFamily: "Blinker-Bold" }}
           >
             {this.state.currentChord}
           </Text>

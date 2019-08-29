@@ -28,8 +28,8 @@ export default class Tab extends Component<Props> {
                 inputRange: [0, 1],
                 outputRange: ["#fff", "#A92411"]
               }),
-              fontSize: 20,
-              fontFamily: "Blinker-Regular"
+              fontSize: 18,
+              fontFamily: "Blinker-SemiBold"
             }}
           >
             {this.props.title}
