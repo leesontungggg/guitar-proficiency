@@ -10,13 +10,16 @@ import {
   Platform
 } from "react-native";
 
-import Tab from './Tab';
+import Tab from "./Tab";
 
 export default class TabBar extends Component<Props> {
   constructor(props) {
     super(props);
-    this.state = { initialReady: false };
-    // make sure this method gets the right scope, no matter how it's called
+    this.state = {
+      initialReady: false,
+      currentScrollX: 0,
+      typeOfScroll: "momentum"
+    };
     this.setScrollViewRef = this.setScrollViewRef.bind(this);
   }
 
@@ -38,12 +41,161 @@ export default class TabBar extends Component<Props> {
       >
         <ScrollView
           ref={this.setScrollViewRef}
-          alwaysBounceHorizontal={false}
           horizontal={true}
-          decelerationRate={0}
-          snapToInterval={200} //your element width
-          snapToAlignment={"center"}
-          scrollEnabled={false}
+          scrollEnabled={true}
+          scrollEventThrottle={0}
+          decelerationRate={0.3}
+          onMomentumScrollEnd={event => {
+            if (this.state.typeOfScroll === "momentum") {
+              console.log("running momentum end");
+              var device_width = Dimensions.get("window").width;
+              if (
+                event.nativeEvent.contentOffset.x >
+                  534 - device_width / 2 - 150 &&
+                event.nativeEvent.contentOffset.x <=
+                  534 - device_width / 2 - 150 + 150
+              ) {
+                let value = 534 - device_width / 2 - 75;
+                this.scrollViewRef.scrollTo({
+                  x: value,
+                  y: 0,
+                  animated: true
+                });
+                this.props.navigation.navigate("SCALE");
+              }
+
+              if (
+                event.nativeEvent.contentOffset.x > 534 - device_width / 2 &&
+                event.nativeEvent.contentOffset.x <=
+                  534 - device_width / 2 + 150
+              ) {
+                let value = 534 - device_width / 2 + 75;
+                this.scrollViewRef.scrollTo({
+                  x: value,
+                  y: 0,
+                  animated: true
+                });
+                this.props.navigation.navigate("CHORD");
+              }
+
+              if (
+                event.nativeEvent.contentOffset.x >
+                  534 - device_width / 2 + 150 &&
+                event.nativeEvent.contentOffset.x <=
+                  534 - device_width / 2 + 300
+              ) {
+                let value = 534 - device_width / 2 + 225;
+                this.scrollViewRef.scrollTo({
+                  x: value,
+                  y: 0,
+                  animated: true
+                });
+                this.props.navigation.navigate("TRIAD");
+              }
+
+              if (
+                event.nativeEvent.contentOffset.x >
+                  534 - device_width / 2 + 300 &&
+                event.nativeEvent.contentOffset.x <=
+                  534 - device_width / 2 + 450
+              ) {
+                let value = 534 - device_width / 2 + 375;
+                this.scrollViewRef.scrollTo({
+                  x: value,
+                  y: 0,
+                  animated: true
+                });
+                this.props.navigation.navigate("ARPEGGIO");
+              }
+            } else {
+              console.log("change to drag");
+            }
+          }}
+          onScroll={event => {
+            var device_width = Dimensions.get("window").width;
+            if (
+              event.nativeEvent.contentOffset.x <=
+              534 - device_width / 2 - 150
+            ) {
+              let value = 534 - device_width / 2 - 75;
+              this.scrollViewRef.scrollTo({ x: value, y: 0, animated: false });
+              this.props.navigation.navigate("SCALE");
+            }
+
+            if (
+              event.nativeEvent.contentOffset.x >
+              534 - device_width / 2 + 450
+            ) {
+              let value = 534 - device_width / 2 + 375;
+              this.scrollViewRef.scrollTo({ x: value, y: 0, animated: false });
+              this.props.navigation.navigate("ARPEGGIO");
+            }
+          }}
+          // onScrollBeginDrag={() => {
+          //   console.log("drag start");
+          //   this.setState({ typeOfScroll: "drag" });
+          // }}
+          // onMomentumScrollBegin={() => {
+          //   this.setState({ typeOfScroll: "momentum" });
+          //   console.log("momentum begin");
+          // }}
+          onScrollEndDrag={event => {
+            let xPosition = event.nativeEvent.contentOffset.x;
+
+            console.log("drag end");
+            var device_width = Dimensions.get("window").width;
+            if (
+              xPosition > 534 - device_width / 2 - 150 &&
+              xPosition <= 534 - device_width / 2 - 150 + 150
+            ) {
+              let value = 534 - device_width / 2 - 75;
+              this.scrollViewRef.scrollTo({
+                x: value,
+                y: 0,
+                animated: true
+              });
+              this.props.navigation.navigate("SCALE");
+            }
+
+            if (
+              xPosition > 534 - device_width / 2 &&
+              xPosition <= 534 - device_width / 2 + 150
+            ) {
+              let value = 534 - device_width / 2 + 75;
+              this.scrollViewRef.scrollTo({
+                x: value,
+                y: 0,
+                animated: true
+              });
+              this.props.navigation.navigate("CHORD");
+            }
+
+            if (
+              xPosition > 534 - device_width / 2 + 150 &&
+              xPosition <= 534 - device_width / 2 + 300
+            ) {
+              let value = 534 - device_width / 2 + 225;
+              this.scrollViewRef.scrollTo({
+                x: value,
+                y: 0,
+                animated: true
+              });
+              this.props.navigation.navigate("TRIAD");
+            }
+
+            if (
+              xPosition > 534 - device_width / 2 + 300 &&
+              xPosition <= 534 - device_width / 2 + 450
+            ) {
+              let value = 534 - device_width / 2 + 375;
+              this.scrollViewRef.scrollTo({
+                x: value,
+                y: 0,
+                animated: true
+              });
+              this.props.navigation.navigate("ARPEGGIO");
+            }
+          }}
           style={{
             height: 80,
             backgroundColor: "#09090A",
@@ -53,23 +205,17 @@ export default class TabBar extends Component<Props> {
           <View style={{ width: 384 }}></View>
           {this.props.navigationState.routes.map((route, index) => {
             var device_width = Dimensions.get("window").width;
-            let value;
-            if (Platform.OS == "android") {
-              value =
-                534 -
-                device_width / 2 -
-                150 / 2 +
-                this.props.navigationState.index * 150;
-            } else {
-              value =
-                534 -
-                device_width / 2 -
-                150 / 2 +
-                this.props.navigationState.index * 150;
+            let value =
+              534 -
+              device_width / 2 -
+              150 / 2 +
+              this.props.navigationState.index * 150;
+
+            {
+              InteractionManager.runAfterInteractions(() =>
+                this.scrollViewRef.scrollTo({ x: value, y: 0, animated: false })
+              );
             }
-            InteractionManager.runAfterInteractions(() =>
-              this.scrollViewRef.scrollTo({ x: value, y: 0, animated: true })
-            );
 
             const focusAnim = this.props.position.interpolate({
               inputRange: [index - 1, index, index + 1],
@@ -100,7 +246,7 @@ export default class TabBar extends Component<Props> {
           <View
             style={{
               width: "45%",
-              borderTopColor: "#D6D6D6",
+              borderTopColor: "#6e6e6e",
               borderTopWidth: 0.5
             }}
           ></View>
@@ -117,7 +263,7 @@ export default class TabBar extends Component<Props> {
           <View
             style={{
               width: "45%",
-              borderTopColor: "#D6D6D6",
+              borderTopColor: "#6e6e6e",
               borderTopWidth: 0.5
             }}
           ></View>

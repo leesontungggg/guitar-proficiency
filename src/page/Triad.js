@@ -58,7 +58,7 @@ export default class TriadPage extends Component<Props> {
           }}
         >
           <Text
-            style={{ fontSize: 40, color: "#ffffff", fontFamily: "Blinker-Bold" }}
+            style={{ fontSize: 45, color: "#ffffff", fontFamily: "Blinker-Bold" }}
           >
             {this.state.currentTriad}
           </Text>
@@ -70,7 +70,7 @@ export default class TriadPage extends Component<Props> {
             alignItems: "center",
             justifyContent: "center",
             width: "80%",
-            height: 44,
+            height: 50,
             backgroundColor: "#c22700"
           }}
           onPress={() => {

@@ -4,7 +4,8 @@ import {
   Image,
   ImageBackground,
   Animated,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from "react-native";
 import SplashScreen from "react-native-splash-screen";
 import {
@@ -25,7 +26,7 @@ const AppNavigator = createStackNavigator(
         title: `GUITAR PROFICIENCY TEST`,
         headerStyle: {
           backgroundColor: "#09090A",
-          borderBottomColor: "#f1f1f1",
+          borderBottomColor: "#6e6e6e",
           borderBottomWidth: 0.5,
           height: 70
         },
@@ -58,7 +59,7 @@ const AppNavigator = createStackNavigator(
         title: `ABOUT GUITAR PROFICIENCY TEST `,
         headerLeft: (
           <TouchableOpacity
-            style={{ paddingLeft: 15 }}
+            style={{ paddingLeft: 20 }}
             onPress={() => navigation.navigate("Home")}
           >
             <Image
@@ -68,17 +69,18 @@ const AppNavigator = createStackNavigator(
           </TouchableOpacity>
         ),
         headerTitleContainerStyle: {
-          left: 50,
-          right: 50
+          left: Platform.OS === "android" ? "8%" : "-4%",
+          width: "100%"
         },
         headerStyle: {
           backgroundColor: "#09090A",
           height: 70
         },
         headerTitleStyle: {
-          fontSize: 14,
+          fontSize: 18,
           fontFamily: "Blinker-Regular"
-        }
+        },
+        headerRight: null
       })
     }
   },
@@ -108,6 +110,7 @@ export default class App extends React.Component {
         source={require("./src/assets/app-background/background.png")}
         style={{ width: "100%", height: "100%" }}
       >
+        <StatusBar backgroundColor="#09090A" barStyle="light-content" />
         <AppContainer />
       </ImageBackground>
     );

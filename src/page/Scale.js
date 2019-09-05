@@ -72,7 +72,7 @@ export default class ScalePage extends Component<Props> {
             alignItems: "center",
             justifyContent: "center",
             width: "80%",
-            height: 44,
+            height: 50,
             backgroundColor: "#c22700"
           }}
           onPress={() => {
