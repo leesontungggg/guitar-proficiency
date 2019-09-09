@@ -19,7 +19,7 @@ export default class ArpeggioPage extends Component<Props> {
 
   getRandomArrayElement = arr => {
     var min = 0;
-    var max = arr.length - 1;
+    var max = arr.length;
     var randIndex = Math.floor(Math.random() * (max - min)) + min;
     return arr[randIndex];
   };

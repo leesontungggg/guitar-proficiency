@@ -27,8 +27,11 @@
     "Aeolian": "true",
     "Locrian": "true",
     "Chromatic": "true",
-    "Harmonic": "true",
+    "Harmonic minor": "true",
+    "Harmonic major": "true",
     "Minor": "true",
-    "Melodic minor": "true"
+    "Melodic minor": "true",
+    "Diminished" :"true",
+    "Whole tone" :"true"
   }
 }

@@ -8,7 +8,7 @@ import ScalePage from "../page/Scale";
 import TriadPage from "../page/Triad";
 import ArpeggioPage from "../page/Arpeggio";
 
-import TabBar from '../components/TabBar';
+import TabBar from "../components/TabBar";
 
 const HomeNavigator = createMaterialTopTabNavigator(
   {
@@ -26,7 +26,29 @@ const HomeNavigator = createMaterialTopTabNavigator(
     }
   },
   {
-    tabBarComponent: TabBar
+    // tabBarComponent: TabBar
+    tabBarOptions: {
+      activeTintColor: "#A92411",
+      inactiveTintColor: "#ffffff",
+      style: {
+        backgroundColor: "#09090A",
+        borderBottomColor: "#6e6e6e",
+        borderWidth: 0.5
+      },
+      tabStyle: {
+        padding: 0,
+        paddingTop: 5,
+        paddingBottom: 5,
+      },
+      labelStyle: {
+        fontFamily: "Blinker-SemiBold",
+        fontSize: 16,
+      },
+      indicatorStyle: {
+        backgroundColor: "#A92411",
+        height: 4
+      }
+    }
   }
 );
 

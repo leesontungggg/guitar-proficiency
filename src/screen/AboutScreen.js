@@ -37,11 +37,9 @@ export default class AboutScreen extends Component<Props> {
             fontSize: 16,
           }}
         >
-          Berklee Tool is an application developed by Designveloper, where
-          guitar players use for quizzing themeselves on memorzing of music
-          notes
+          Guitar Proficiency Test is an application developed by Designveloper, where
+          guitar players use for quizzing themeselves on fretboard knowledge. This app was designed based on Berklee curriculum.
         </Text>
-
         <Text
           style={{
             marginTop: 12,

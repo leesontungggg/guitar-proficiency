@@ -31,7 +31,7 @@ const AppNavigator = createStackNavigator(
           height: 70
         },
         headerTitleContainerStyle: {
-          left: Platform.OS === "android" ? 0 : "-10%"
+          left: Platform.OS === "android" ? 0 : "-11%"
         },
         headerTitleStyle: {
           fontWeight: "bold",
@@ -59,11 +59,11 @@ const AppNavigator = createStackNavigator(
         title: `ABOUT GUITAR PROFICIENCY TEST `,
         headerLeft: (
           <TouchableOpacity
-            style={{ paddingLeft: 20 }}
+            style={{ paddingLeft: 20, }}
             onPress={() => navigation.navigate("Home")}
           >
             <Image
-              style={{ width: 20, height: 20 }}
+              style={{ width: 25, height: 25 }}
               source={require("./src/assets/icon/back-icon.png")}
             />
           </TouchableOpacity>
@@ -103,6 +103,7 @@ const AppContainer = createAppContainer(AppNavigator);
 export default class App extends React.Component {
   componentDidMount() {
     SplashScreen.hide();
+    console.log(Platform.OS)
   }
   render() {
     return (
